@@ -59,5 +59,5 @@ app.get( '/:url', ( req, res ) => {
 
 
 app.listen( port, () => {
-    console.log( `Example app listening on port ${port}!` ); // eslint-disable-line
+    console.log( `Screenshot app listening on port ${port}!` ); // eslint-disable-line
 } );
