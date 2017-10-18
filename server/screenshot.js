@@ -46,8 +46,8 @@ async function getScreenShot( screenShotUrl, options ) {
         await page.goto( screenShotUrl, {
             waitUntil           : 'networkidle',
             networkIdleTimeout  : 3000,
-            networkIdleInflight : 10,
-        } );
+            networkIdleInflight : 6,
+        } ).catch( error => console.log( error ) ); // eslint-disable-line
         console.log( `-- opened screenShotUrl: ${screenShotUrl}` ); // eslint-disable-line
 
         screenshot = await page.screenshot( {
@@ -55,7 +55,7 @@ async function getScreenShot( screenShotUrl, options ) {
             type     : 'jpeg',
             quality  : quality,
             fullPage : true,
-        } );
+        } ).catch( error => console.log( error ) ); // eslint-disable-line
         console.log( '-- screenshot taken' ); // eslint-disable-line
 
         await browser.close();

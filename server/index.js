@@ -44,7 +44,7 @@ app.get( '/:url', ( req, res ) => {
 
     const { url } = req.params;
 
-    if ( !url && !validUrl( url ) ) {
+    if ( !url && !isWebUri( url ) ) {
         res.send( JSON.stringify( {
             error   : true,
             message : 'no url is set',
