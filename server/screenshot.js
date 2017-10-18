@@ -50,7 +50,7 @@ async function getScreenShot( screenShotUrl, options ) {
     console.log( `-- opened screenShotUrl: ${screenShotUrl}` ); // eslint-disable-line
 
     const screenshot = await page.screenshot( {
-        path     : `${__dirname}/../screenshots/${imageName}`,
+        // path     : `${__dirname}/../screenshots/${imageName}`,
         type     : 'jpeg',
         quality  : quality,
         fullPage : true,
