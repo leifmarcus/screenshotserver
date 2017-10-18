@@ -33,7 +33,7 @@ async function getScreenShot( screenShotUrl, options ) {
     const imageName = `${imageHostName}${imagePath}__${width}x${height}.jpg`;
 
 
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch( { args : [ '--no-sandbox' ] } );
     const page = await browser.newPage();
 
     await page.setViewport( {
