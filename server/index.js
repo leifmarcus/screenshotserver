@@ -6,24 +6,23 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
-app.use( ( req, res, next ) => {
-    res.setHeader( 'Content-Type', 'application/json' );
+const wrap = fn => ( ...args ) => fn( ...args ).catch( args[ 2 ] );
 
+app.use( ( req, res, next ) => {
+    res.setHeader( 'Content-Type', 'image/jpeg' );
     console.log( `incoming request: ${req.method} : ${req.protocol}://${req.hostname}${req.path}` ); // eslint-disable-line
 
     next();
 } );
 
 
-app.get( '/', async ( req, res ) => {
-    res.setHeader( 'Content-Type', 'image/jpeg' );
+app.get( '/', wrap( async ( req, res ) => {
     const { url, w, h, q } = req.query;
 
     // url is set as parameter and the url is a valid url
     if ( url && !isWebUri( url ) ) {
         const image = getErroImage( 'url-not-valid' );
         res.write( image );
-
         res.end();
 
         return;
@@ -37,7 +36,7 @@ app.get( '/', async ( req, res ) => {
 
     res.write( image );
     res.end();
-} );
+} ) );
 
 
 app.get( '/:url', ( req, res ) => {

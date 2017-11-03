@@ -26,7 +26,7 @@ function validUrl( str ) {
  */
 function getErroImage( errorCode ) {
 
-    const errors = [ 'url-not-valid', 'general-error' ];
+    const errors = [ 'url-not-valid', 'general-error', 'website-error' ];
 
     const index = errors.indexOf( errorCode );
 
